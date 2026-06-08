@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>To-Do Page</title></head>
+<body>
+  <h1>To-Do Form</h1>
+
+  <label>Item Name: <input type="text" id="itemName" required></label><br><br>
+  <label>Item Description: <input type="text" id="itemDescription" required></label><br><br>
+  <label>Item ID: <input type="text" id="itemId"></label><br><br>
+  <label>Item UUID: <input type="text" id="itemUuid"></label><br><br>
+  <label>Item Hash: <input type="text" id="itemHash"></label><br><br>
+  <button type="button" onclick="submitForm()">Submit</button>
+
+  <script>
+    async function submitForm() {
+      const res = await fetch('/submittodoitem', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          itemName: document.getElementById('itemName').value,
+          itemDescription: document.getElementById('itemDescription').value,
+          itemId: document.getElementById('itemId').value,
+          itemUuid: document.getElementById('itemUuid').value,
+          itemHash: document.getElementById('itemHash').value
+        })
+      });
+      const data = await res.json();
+      alert(data.message || data.error);
+    }
+  </script>
+</body>
+</html>
