@@ -19,7 +19,8 @@
         body: JSON.stringify({
           itemName: document.getElementById('itemName').value,
           itemDescription: document.getElementById('itemDescription').value,
-          itemId: document.getElementById('itemId').value,
+          <label>Item ID: <input type="text" id="itemId"></label><br><br>
+	  itemId: document.getElementById('itemId').value,
           itemUuid: document.getElementById('itemUuid').value,
           itemHash: document.getElementById('itemHash').value
         })
